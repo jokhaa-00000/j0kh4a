@@ -1,0 +1,48 @@
+<div class="rent-container">
+  @if (loading()) {
+    <app-loader></app-loader>
+  } @else if (error()) {
+    <div class="alert alert-error">{{ error() }}</div>
+  } @else if (success()) {
+    <div class="alert alert-success">{{ success() }}</div>
+  } @else if (car()) {
+    <div class="rent-card">
+      <div class="rent-images">
+        <img [src]="car()?.imageUrl1 || car()?.image1" alt="Car image" class="rent-image" />
+        <img [src]="car()?.imageUrl2 || car()?.image2" alt="Car image" class="rent-image" />
+        <img [src]="car()?.imageUrl3 || car()?.image3" alt="Car image" class="rent-image" />
+      </div>
+      <div class="rent-details">
+        <div class="brand">{{ car()?.brand }}</div>
+        <div class="model">{{ car()?.model }}</div>
+        <div class="year">{{ car()?.year }}</div>
+        <div class="fuel">
+          {{ 'card.fuel' | translate }}: {{ car()?.fuelCapacity }} {{ 'rent.liter' | translate }}
+        </div>
+        <div class="transmission">
+          {{ 'card.transmission' | translate }}: {{ car()?.transmission }}
+        </div>
+        <div class="capacity">
+          {{ 'card.capacity' | translate }}: {{ car()?.capacity }} {{ 'rent.people' | translate }}
+        </div>
+        <div class="price">{{ 'card.price_per_day' | translate }}: {{ car()?.price }}₾</div>
+        <div class="days-slider">
+          <label>{{ 'rent.days_label' | translate }}</label>
+          <input
+            type="range"
+            min="1"
+            max="30"
+            [value]="days()"
+            (input)="setDays($event.target.value)"
+          />
+          <span>{{ days() }} {{ 'rent.day' | translate }}</span>
+          <div>{{ 'rent.total_paid' | translate }}: {{ (car()?.price || 0) * days() }}₾</div>
+        </div>
+        <button class="purchase-btn" (click)="purchase()">{{ 'card.rent' | translate }}</button>
+      </div>
+    </div>
+    <div class="rent-map">
+      <div id="leafletMap" class="leaflet-map"></div>
+    </div>
+  }
+</div>

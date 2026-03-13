@@ -1,0 +1,71 @@
+### Test Car Upload with Images (HTTP file for VS Code REST Client or Postman)
+
+POST https://rentcar.stepprojects.ge/api/Car
+Content-Type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW
+
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="Brand"
+
+Porsche
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="Model"
+
+Taycan
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="Year"
+
+2026
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="Price"
+
+78
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="Capacity"
+
+4
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="Transmission"
+
+Automatic
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="City"
+
+წყალტუბო
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="FuelCapacity"
+
+89
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="CreatedBy"
+
+zxa@gmaill.com
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="CreatedByEmail"
+
+zxa@gmaill.com
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="OwnerPhoneNumber"
+
+550051010
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="Image1"; filename="car.webp"
+Content-Type: image/webp
+
+< ./car.webp
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="Image2"; filename="car.webp"
+Content-Type: image/webp
+
+< ./car.webp
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="Image3"; filename="car.webp"
+Content-Type: image/webp
+
+< ./car.webp
+------WebKitFormBoundary7MA4YWxkTrZu0gW--
+
+# Instructions:
+# 1. Replace < ./car.webp with the path to a real image file on your machine.
+# 2. You can use this file with the VS Code REST Client extension or import the structure into Postman.
+# 3. Check if the API returns the image fields as non-null.
+# 4. If images are still null, the backend is not processing files correctly.

@@ -1,0 +1,165 @@
+.alert {
+  padding: 12px 15px;
+  border-radius: 4px;
+  margin-bottom: 20px;
+  font-size: 16px;
+  font-weight: 500;
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.alert-error {
+  background-color: #ffcccc;
+  color: #990000;
+  border-left: 4px solid #990000;
+}
+.alert-success {
+  background-color: #ccffcc;
+  color: #006600;
+  border-left: 4px solid #006600;
+}
+.leaflet-map {
+  width: 900px;
+  height: 300px;
+  border-radius: 24px;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+  margin: 0 auto;
+  z-index: 1;
+}
+.simple-map {
+  width: 900px;
+  height: 300px;
+  background: linear-gradient(135deg, #e0eafc 0%, #cfdef3 100%);
+  border-radius: 24px;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+  position: relative;
+  margin: 0 auto;
+}
+.map-marker {
+  width: 18px;
+  height: 18px;
+  background: #e53935;
+  border-radius: 50%;
+  position: absolute;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  border: 2px solid #fff;
+}
+/* Container styles */
+.rent-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 32px 0;
+  background: #f7f7f7;
+}
+
+.rent-card {
+  display: flex;
+  flex-direction: row;
+  background: #fff;
+  border-radius: 24px;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+  padding: 32px;
+  margin-bottom: 32px;
+  max-width: 900px;
+  width: 100%;
+  gap: 32px;
+}
+
+.rent-images {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 320px;
+}
+
+.rent-image {
+  width: 320px;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+.rent-details {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  font-size: 18px;
+  color: #444;
+}
+.brand {
+  font-size: 16px;
+  color: #888;
+}
+.model {
+  font-size: 32px;
+  font-weight: bold;
+  color: #222;
+}
+.year {
+  font-size: 20px;
+  color: #666;
+}
+.fuel,
+.transmission,
+.capacity {
+  font-size: 18px;
+  color: #555;
+}
+.price {
+  font-size: 22px;
+  font-weight: bold;
+  color: #ffed4e;
+  margin-top: 8px;
+}
+.days-slider {
+  margin-top: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.days-slider label {
+  font-size: 16px;
+  color: #666;
+}
+.days-slider input[type='range'] {
+  width: 100%;
+  accent-color: #ffed4e;
+}
+.days-slider span {
+  font-size: 16px;
+  color: #444;
+}
+.days-slider div {
+  font-size: 18px;
+  color: #222;
+}
+.purchase-btn {
+  margin-top: 24px;
+  padding: 12px 32px;
+  font-size: 20px;
+  background: #ffed4e;
+  color: #000000;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.purchase-btn:hover {
+  background: #ffed4e;
+}
+.rent-map {
+  width: 900px;
+  margin-bottom: 32px;
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+}
+.loading,
+.error {
+  font-size: 22px;
+  color: #e53935;
+  margin: 32px 0;
+}

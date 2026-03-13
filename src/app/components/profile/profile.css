@@ -1,0 +1,303 @@
+/* Notification icon styles */
+.notification-icon {
+  display: inline-block;
+  position: relative;
+  margin-left: 12px;
+  cursor: pointer;
+  vertical-align: middle;
+}
+.icon-bell {
+  font-size: 24px;
+  color: #444;
+}
+.notification-dot {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 10px;
+  height: 10px;
+  background: red;
+  border-radius: 50%;
+  border: 2px solid #fff;
+}
+.notification-popup {
+  position: absolute;
+  top: 40px;
+  right: 0;
+  min-width: 220px;
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+  z-index: 100;
+  padding: 16px;
+}
+.notification-message {
+  margin-bottom: 12px;
+  font-size: 15px;
+  color: #222;
+}
+.notification-message:last-child {
+  margin-bottom: 0;
+}
+/* Popup animation */
+.animated-popup {
+  animation: popupFadeIn 0.35s ease;
+}
+@keyframes popupFadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.profile-container {
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 36px 20px;
+}
+
+.profile-header {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  margin-bottom: 32px;
+}
+
+.avatar {
+  width: 88px;
+  height: 88px;
+  border-radius: 50%;
+  background: #ffed4e;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #000000;
+  font-size: 28px;
+  font-weight: 700;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
+}
+
+.profile-name {
+  font-size: 28px;
+  font-weight: 700;
+  color: #1e293b;
+}
+
+.profile-section {
+  margin-top: 28px;
+}
+
+.profile-section h2 {
+  margin-bottom: 16px;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 16px;
+}
+
+.car-card,
+.rental-card {
+  background: #fff;
+  border-radius: 18px;
+  padding: 18px;
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.08);
+  transition:
+    box-shadow 0.2s,
+    transform 0.2s;
+  border: 1px solid #e2e8f0;
+  position: relative;
+}
+
+.car-card:hover,
+.rental-card:hover {
+  box-shadow: 0 12px 32px rgba(42, 122, 226, 0.12);
+  transform: translateY(-4px) scale(1.02);
+}
+
+.badge {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: 600;
+  background: #000000;
+  color: #ffed4e;
+  margin-left: 8px;
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 12px;
+  border-bottom: 1px solid #e2e8f0;
+  padding-bottom: 6px;
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 12px;
+}
+
+.car-title {
+  font-size: 18px;
+  font-weight: 700;
+  color: #1e293b;
+}
+
+.car-year {
+  font-size: 14px;
+  color: #64748b;
+}
+
+.card-body {
+  font-size: 14px;
+  color: #475569;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.card-actions {
+  margin-top: 12px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.card-actions .rent-btn {
+  background-color: #ffed4e;
+  color: #000000;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background-color 0.2s;
+}
+
+.card-actions .rent-btn:hover {
+  background-color: #000000;
+  color: #ffed4e;
+}
+
+.rental-title {
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 10px;
+  color: #1e293b;
+}
+
+.rental-details {
+  font-size: 14px;
+  color: #475569;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.alert {
+  padding: 12px 15px;
+  border-radius: 4px;
+  margin-bottom: 20px;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.alert-error {
+  background-color: #ffcccc;
+  color: #990000;
+  border-left: 4px solid #990000;
+}
+
+.alert-success {
+  background-color: #ccffcc;
+  color: #006600;
+  border-left: 4px solid #006600;
+}
+
+.loading {
+  font-size: 18px;
+  color: #64748b;
+}
+
+.empty {
+  font-size: 16px;
+  color: #64748b;
+}
+
+.rental-json pre {
+  background: rgba(0, 0, 0, 0.04);
+  padding: 10px;
+  border-radius: 8px;
+  font-size: 12px;
+  overflow-x: auto;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .profile-container {
+    max-width: 100%;
+    padding: 24px 10px;
+  }
+  .profile-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+  .avatar {
+    width: 64px;
+    height: 64px;
+    font-size: 22px;
+  }
+  .profile-name {
+    font-size: 22px;
+  }
+}
+
+@media (max-width: 768px) {
+  .profile-container {
+    padding: 12px 4px;
+  }
+  .profile-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+  .avatar {
+    width: 48px;
+    height: 48px;
+    font-size: 16px;
+  }
+  .profile-name {
+    font-size: 18px;
+  }
+  .cards-grid {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .profile-container {
+    padding: 4px 2px;
+  }
+  .profile-header {
+    gap: 4px;
+  }
+  .profile-section h2 {
+    font-size: 16px;
+  }
+  .profile-name {
+    font-size: 15px;
+  }
+}

@@ -1,0 +1,94 @@
+<div class="profile-container">
+  <div class="profile-header">
+    <div class="avatar">{{ initials() }}</div>
+    <div class="profile-name">
+      {{ userName() }}
+      <span class="notification-icon" (click)="toggleNotifications()">
+        <span class="icon-bell">&#128276;</span>
+        @if (messages().length > 0) {
+          <span class="notification-dot"></span>
+        }
+        @if (showNotifications()) {
+          <div class="notification-popup animated-popup">
+            @for (msg of messages(); track msg.id || msg.messageId) {
+              <div class="notification-message">
+                <span
+                  >{{ msg.senderPhoneNumber }} {{ 'profile.notification_rented' | translate }}</span
+                ><br />
+                @if (messageCars()[msg.carId]) {
+                  {{ messageCars()[msg.carId].brand }} {{ messageCars()[msg.carId].model }}
+                  {{ messageCars()[msg.carId].year }}<br />
+                }
+                <span>{{ msg.text }}</span>
+              </div>
+            }
+          </div>
+        }
+      </span>
+    </div>
+  </div>
+  <!-- Removed notifications section, now handled by icon -->
+
+  <div class="profile-section">
+    <h2>{{ 'profile.favorites' | translate }}</h2>
+    @if (loading()) {
+      <app-loader></app-loader>
+    } @else if (error()) {
+      <div class="alert alert-error">{{ error() }}</div>
+    } @else if (favorites().length === 0) {
+      <div class="empty">{{ 'profile.no_favorites' | translate }}</div>
+    } @else {
+      <div class="cards-grid">
+        @for (car of favorites(); track car.id) {
+          <div class="car-card">
+            <div class="card-header">
+              <div class="car-title">{{ car.brand }} {{ car.model }}</div>
+            </div>
+            <div>
+              <strong>{{ 'card.transmission' | translate }}:</strong> {{ car.transmission }}
+            </div>
+            <div class="card-actions">
+              <button class="rent-btn" (click)="rentFavorite(car.id)">
+                {{ 'card.rent' | translate }}
+              </button>
+            </div>
+          </div>
+        }
+      </div>
+    }
+  </div>
+
+  <div class="profile-section">
+    <h2>{{ 'profile.rented_cars' | translate }}</h2>
+    @if (rentals().length === 0) {
+      <div class="empty">{{ 'profile.no_rentals' | translate }}</div>
+    } @else {
+      <div class="cards-grid">
+        @for (rental of rentals(); track rental.id || rental.purchaseId || rental.carId) {
+          <div class="rental-card">
+            <div class="rental-title">
+              {{
+                (rental.carBrand && rental.carModel
+                  ? rental.carBrand + ' ' + rental.carModel
+                  : null) ||
+                  ('profile.car' | translate) + ' ' + (rental.carId || rental.purchaseId || '')
+              }}
+            </div>
+            <div class="rental-details">
+              <div>
+                <strong>{{ 'profile.duration' | translate }}:</strong>
+                {{ rental.multiplier || '-' }}
+              </div>
+              <div>
+                <strong>{{ 'profile.price' | translate }}:</strong> {{ rental.pricePaid || '-' }} ₾
+              </div>
+              <div>
+                <strong>{{ 'profile.city' | translate }}:</strong> {{ rental.city || '-' }}
+              </div>
+            </div>
+          </div>
+        }
+      </div>
+    }
+  </div>
+</div>

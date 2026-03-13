@@ -1,0 +1,281 @@
+<div class="rentout-container">
+  <div class="rentout-box">
+    <h1>{{ 'rentout.add_car' | translate }}</h1>
+
+    <form *ngIf="!createdCar" (ngSubmit)="onSubmit()" #rentoutForm="ngForm">
+      <div class="form-row">
+        <div class="form-group">
+          <label for="brand">{{ 'rentout.brand' | translate }} *</label>
+          <input
+            id="brand"
+            name="brand"
+            [(ngModel)]="brand"
+            (ngModelChange)="onBrandChange($event)"
+            list="brand-options"
+            [placeholder]="'rentout.brand' | translate"
+            required
+          />
+          <datalist id="brand-options">
+            <option *ngFor="let brandName of brandOptions" [value]="brandName"></option>
+          </datalist>
+        </div>
+        <div class="form-group">
+          <label for="model">{{ 'rentout.model' | translate }} *</label>
+
+          <ng-container *ngIf="modelInputMode === 'select'; else modelTextInput">
+            <select
+              id="model"
+              name="model"
+              [(ngModel)]="model"
+              (ngModelChange)="onModelSelect($event)"
+              required
+            >
+              <option value="" disabled selected>{{ 'rentout.model' | translate }}</option>
+              <option *ngFor="let modelName of modelOptions" [value]="modelName">
+                {{ modelName }}
+              </option>
+              <option value="__other">{{ 'rentout.model' | translate }} (type)</option>
+            </select>
+          </ng-container>
+
+          <ng-template #modelTextInput>
+            <input
+              id="model"
+              name="model"
+              [(ngModel)]="model"
+              [placeholder]="'rentout.model' | translate"
+              required
+            />
+          </ng-template>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label for="year">{{ 'rentout.year' | translate }} *</label>
+          <input
+            id="year"
+            type="number"
+            name="year"
+            [(ngModel)]="year"
+            min="1900"
+            max="2100"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <label for="price">{{ 'rentout.price' | translate }} *</label>
+          <input id="price" type="number" name="price" [(ngModel)]="price" min="0" required />
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label for="capacity">{{ 'rentout.capacity' | translate }}</label>
+          <input id="capacity" type="number" name="capacity" [(ngModel)]="capacity" min="1" />
+        </div>
+        <div class="form-group">
+          <label for="transmission">{{ 'rentout.transmission' | translate }}</label>
+          <select id="transmission" name="transmission" [(ngModel)]="transmission">
+            <option value="Automatic">Automatic</option>
+            <option value="Manual">Manual</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group full-width">
+          <label for="city">{{ 'rentout.city' | translate }} *</label>
+          <ng-container *ngIf="cities.length; else cityTextInput">
+            <select id="city" name="city" [(ngModel)]="city" required>
+              <option value="" disabled selected>{{ 'rentout.city' | translate }}</option>
+              <option *ngFor="let option of cities" [value]="option">
+                {{ option }}
+              </option>
+            </select>
+          </ng-container>
+          <ng-template #cityTextInput>
+            <input id="city" name="city" [(ngModel)]="city" required />
+          </ng-template>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label for="fuelCapacity">{{ 'rentout.fuel_capacity' | translate }}</label>
+          <input
+            id="fuelCapacity"
+            type="number"
+            name="fuelCapacity"
+            [(ngModel)]="fuelCapacity"
+            min="0"
+          />
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group full-width">
+          <label for="image1">{{ 'rentout.image1' | translate }}</label>
+          <input
+            type="file"
+            id="image1"
+            name="image1"
+            accept="image/*"
+            (change)="onFileSelected($event, 1)"
+            style="display: none"
+          />
+          <button type="button" onclick="document.getElementById('image1').click()">
+            <svg
+              aria-hidden="true"
+              stroke="currentColor"
+              stroke-width="2"
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                stroke-width="2"
+                stroke="#ffffff"
+                d="M13.5 3H12H8C6.34315 3 5 4.34315 5 6V18C5 19.6569 6.34315 21 8 21H11M13.5 3L19 8.625M13.5 3V7.625C13.5 8.17728 13.9477 8.625 14.5 8.625H19M19 8.625V11.8125"
+                stroke-linejoin="round"
+                stroke-linecap="round"
+              ></path>
+              <path
+                stroke-linejoin="round"
+                stroke-linecap="round"
+                stroke-width="2"
+                stroke="#ffffff"
+                d="M17 15V18M17 21V18M17 18H14M17 18H20"
+              ></path>
+            </svg>
+            {{ 'rentout.image1' | translate }}
+          </button>
+          <img
+            *ngIf="image1Preview"
+            [src]="image1Preview"
+            alt="Preview"
+            style="max-width: 120px; margin-top: 8px; border-radius: 8px; display: block"
+          />
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group full-width">
+          <label for="image2">{{ 'rentout.image2' | translate }}</label>
+          <input
+            type="file"
+            id="image2"
+            name="image2"
+            accept="image/*"
+            (change)="onFileSelected($event, 2)"
+            style="display: none"
+          />
+          <button type="button" onclick="document.getElementById('image2').click()">
+            <svg
+              aria-hidden="true"
+              stroke="currentColor"
+              stroke-width="2"
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                stroke-width="2"
+                stroke="#ffffff"
+                d="M13.5 3H12H8C6.34315 3 5 4.34315 5 6V18C5 19.6569 6.34315 21 8 21H11M13.5 3L19 8.625M13.5 3V7.625C13.5 8.17728 13.9477 8.625 14.5 8.625H19M19 8.625V11.8125"
+                stroke-linejoin="round"
+                stroke-linecap="round"
+              ></path>
+              <path
+                stroke-linejoin="round"
+                stroke-linecap="round"
+                stroke-width="2"
+                stroke="#ffffff"
+                d="M17 15V18M17 21V18M17 18H14M17 18H20"
+              ></path>
+            </svg>
+            {{ 'rentout.image2' | translate }}
+          </button>
+          <img
+            *ngIf="image2Preview"
+            [src]="image2Preview"
+            alt="Preview"
+            style="max-width: 120px; margin-top: 8px; border-radius: 8px; display: block"
+          />
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group full-width">
+          <label for="image3">{{ 'rentout.image3' | translate }}</label>
+          <input
+            type="file"
+            id="image3"
+            name="image3"
+            accept="image/*"
+            (change)="onFileSelected($event, 3)"
+            style="display: none"
+          />
+          <button type="button" onclick="document.getElementById('image3').click()">
+            <svg
+              aria-hidden="true"
+              stroke="currentColor"
+              stroke-width="2"
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                stroke-width="2"
+                stroke="#ffffff"
+                d="M13.5 3H12H8C6.34315 3 5 4.34315 5 6V18C5 19.6569 6.34315 21 8 21H11M13.5 3L19 8.625M13.5 3V7.625C13.5 8.17728 13.9477 8.625 14.5 8.625H19M19 8.625V11.8125"
+                stroke-linejoin="round"
+                stroke-linecap="round"
+              ></path>
+              <path
+                stroke-linejoin="round"
+                stroke-linecap="round"
+                stroke-width="2"
+                stroke="#ffffff"
+                d="M17 15V18M17 21V18M17 18H14M17 18H20"
+              ></path>
+            </svg>
+            {{ 'rentout.image3' | translate }}
+          </button>
+          <img
+            *ngIf="image3Preview"
+            [src]="image3Preview"
+            alt="Preview"
+            style="max-width: 120px; margin-top: 8px; border-radius: 8px; display: block"
+          />
+        </div>
+      </div>
+
+      <div *ngIf="errorMessage" class="alert alert-error">{{ errorMessage }}</div>
+      <div *ngIf="successMessage" class="alert alert-success">{{ successMessage }}</div>
+
+      <ng-container *ngIf="createdCarAsCar as car">
+        <div class="created-car">
+          <h3>{{ 'rentout.created' | translate }}</h3>
+          <p>
+            {{ car.brand }} {{ car.model }} (ID: {{ car.id }})<br />
+            {{ 'rentout.city' | translate }}: {{ car.city }} • {{ 'rentout.price' | translate }}:
+            {{ car.price | number: '1.0-0' }}
+          </p>
+          <p>
+            <a routerLink="/cars" class="btn-link">{{ 'rentout.view_all' | translate }}</a>
+          </p>
+        </div>
+      </ng-container>
+
+      <div class="form-actions">
+        <button type="submit" class="btn-submit" [disabled]="loading">
+          {{ loading ? ('rentout.saving' | translate) : ('rentout.save_car' | translate) }}
+        </button>
+      </div>
+      <!-- <div style="margin-top: 10px">
+        <a routerLink="/profile" class="btn-link">{{ 'rentout.back_to_profile' | translate }}</a>
+      </div> -->
+    </form>
+  </div>
+</div>

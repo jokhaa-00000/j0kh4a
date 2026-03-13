@@ -1,0 +1,49 @@
+<div class="card">
+  <div class="card-header">
+    <div class="car-info">
+      <div class="car-name">{{ carName }}</div>
+      <div class="car-year">{{ car().year }}</div>
+    </div>
+    <button
+      class="favorite-btn"
+      (click)="toggleFavorite()"
+      [class.active]="isFav()"
+      aria-label="Add to favorites"
+    >
+      <span *ngIf="isFav()">❤️</span>
+      <span *ngIf="!isFav()">🤍</span>
+    </button>
+    @if (favoriteError()) {
+      <div class="favorite-error">{{ favoriteError() }}</div>
+    }
+  </div>
+
+  <div class="car-image-container">
+    <button class="slider-btn prev" (click)="previousImage()" aria-label="Previous image">◀</button>
+    <img [src]="currentImage" [alt]="carName" class="car-image" />
+    <button class="slider-btn next" (click)="nextImage()" aria-label="Next image">▶</button>
+  </div>
+
+  <div class="car-specs">
+    <div class="spec">
+      <span class="spec-label">{{ 'card.fuel' | translate }}:</span>
+      <span class="spec-value">{{ car().fuelCapacity }}L</span>
+    </div>
+    <div class="spec">
+      <span class="spec-label">{{ 'card.capacity' | translate }}:</span>
+      <span class="spec-value">{{ car().capacity }} {{ 'card.capacity' | translate }}</span>
+    </div>
+    <div class="spec">
+      <span class="spec-label">{{ 'card.transmission' | translate }}:</span>
+      <span class="spec-value">{{ car().transmission }}</span>
+    </div>
+  </div>
+
+  <div class="card-footer">
+    <div class="price">
+      <span class="price-label">{{ 'card.price_per_day' | translate }}:</span>
+      <span class="price-value">${{ car().price }}</span>
+    </div>
+    <button class="rent-btn" (click)="rentCar()">{{ 'card.rent' | translate }}</button>
+  </div>
+</div>

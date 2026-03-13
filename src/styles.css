@@ -1,0 +1,28 @@
+/* Global styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial, sans-serif;
+}
+
+/* Ensure router outlet components fill their container */
+app-register,
+app-main,
+app-login,
+app-profile {
+  display: block;
+  width: 100%;
+  height: 100%;
+}

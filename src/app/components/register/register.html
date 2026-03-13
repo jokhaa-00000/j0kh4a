@@ -1,0 +1,105 @@
+<div class="register-container">
+  <div class="register-box">
+    <h1>{{ 'register.create_account' | translate }}</h1>
+    <form (ngSubmit)="onSubmit()" #registerForm="ngForm">
+      <div class="form-group">
+        <label for="firstName">{{ 'register.first_name' | translate }}</label>
+        <input
+          type="text"
+          id="firstName"
+          [(ngModel)]="firstName"
+          name="firstName"
+          [placeholder]="'register.first_name' | translate"
+          required
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="lastName">{{ 'register.last_name' | translate }}</label>
+        <input
+          type="text"
+          id="lastName"
+          [(ngModel)]="lastName"
+          name="lastName"
+          [placeholder]="'register.last_name' | translate"
+          required
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="email">{{ 'register.email' | translate }}</label>
+        <input
+          type="email"
+          id="email"
+          [(ngModel)]="email"
+          name="email"
+          [placeholder]="'register.email' | translate"
+          required
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="phoneNumber">{{ 'register.phone' | translate }}</label>
+        <input
+          type="tel"
+          id="phoneNumber"
+          [(ngModel)]="phoneNumber"
+          name="phoneNumber"
+          [placeholder]="'register.phone' | translate"
+          required
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="password">{{ 'register.password' | translate }}</label>
+        <input
+          type="password"
+          id="password"
+          [(ngModel)]="password"
+          name="password"
+          [placeholder]="'register.password' | translate"
+          required
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="confirmPassword">{{ 'register.confirm_password' | translate }}</label>
+        <input
+          type="password"
+          id="confirmPassword"
+          [(ngModel)]="confirmPassword"
+          name="confirmPassword"
+          [placeholder]="'register.confirm_password' | translate"
+          required
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="role">{{ 'register.role' | translate }}</label>
+        <select id="role" [(ngModel)]="role" name="role" required>
+          <option value="customer">{{ 'register.customer' | translate }}</option>
+          <option value="agent">{{ 'register.agent' | translate }}</option>
+        </select>
+      </div>
+
+      <div *ngIf="errorMessage" class="alert alert-error">
+        {{ errorMessage }}
+      </div>
+
+      <div *ngIf="successMessage" class="alert alert-success">
+        {{ successMessage }}
+      </div>
+
+      <button type="submit" class="btn-submit" [disabled]="loading">
+        {{ loading ? ('register.registering' | translate) : ('register.register' | translate) }}
+      </button>
+
+      <div class="login-link">
+        <p>
+          {{ 'register.already_have_account' | translate }}
+          <a routerLink="/login">{{ 'register.login_here' | translate }}</a>
+        </p>
+      </div>
+    </form>
+  </div>
+</div>

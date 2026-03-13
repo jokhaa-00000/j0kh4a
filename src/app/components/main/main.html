@@ -1,0 +1,43 @@
+<div class="main-container">
+  <div class="site-intro">
+    <h1>{{ 'intro.title' | translate }}</h1>
+    <p>{{ 'intro.text' | translate }}</p>
+  </div>
+  @if (loading()) {
+    <app-loader></app-loader>
+  } @else if (error()) {
+    <div class="error">{{ error() }}</div>
+  } @else {
+    <!-- Random Cars Section -->
+    <div class="section">
+      <div class="section-header">
+        <h2>Random Cars</h2>
+      </div>
+      @if (randomCars().length > 0) {
+        <div class="cars-grid">
+          @for (car of randomCars(); track car.id) {
+            <app-card [car]="car" (isFavorite)="onFavoriteAdded($event)" />
+          }
+        </div>
+      } @else {
+        <div class="no-cars">No random cars available</div>
+      }
+    </div>
+
+    <!-- Popular Cars Section -->
+    <div class="section">
+      <div class="section-header">
+        <h2>Popular Cars</h2>
+      </div>
+      @if (popularCars().length > 0) {
+        <div class="cars-grid">
+          @for (car of popularCars(); track car.id) {
+            <app-card [car]="car" (isFavorite)="onFavoriteAdded($event)" />
+          }
+        </div>
+      } @else {
+        <div class="no-cars">No popular cars available</div>
+      }
+    </div>
+  }
+</div>

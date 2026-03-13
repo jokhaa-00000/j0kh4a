@@ -1,0 +1,117 @@
+<div class="cars-container">
+  <div class="section-header">
+    <h2>{{ 'header.cars' | translate }}</h2>
+  </div>
+
+  <!-- Filters Section -->
+  <div class="filters-section">
+    <h3>{{ 'cars.filter' | translate }}</h3>
+    <div class="filters-grid">
+      <div class="filter-group">
+        <label for="capacity">{{ 'cars.capacity' | translate }}</label>
+        <input
+          id="capacity"
+          type="number"
+          [ngModel]="capacity()"
+          (ngModelChange)="onFilterChange($event, 'capacity')"
+          [placeholder]="'cars.capacity_placeholder' | translate"
+          min="1"
+        />
+      </div>
+
+      <div class="filter-group">
+        <label for="startYear">{{ 'cars.start_year' | translate }}</label>
+        <input
+          id="startYear"
+          type="number"
+          [ngModel]="startYear()"
+          (ngModelChange)="onFilterChange($event, 'startYear')"
+          [placeholder]="'cars.start_year_placeholder' | translate"
+          min="1900"
+        />
+      </div>
+
+      <div class="filter-group">
+        <label for="endYear">{{ 'cars.end_year' | translate }}</label>
+        <input
+          id="endYear"
+          type="number"
+          [ngModel]="endYear()"
+          (ngModelChange)="onFilterChange($event, 'endYear')"
+          [placeholder]="'cars.end_year_placeholder' | translate"
+          min="1900"
+        />
+      </div>
+
+      <div class="filter-group">
+        <label for="city">{{ 'cars.city' | translate }}</label>
+        <select
+          id="city"
+          [ngModel]="city()"
+          (ngModelChange)="onFilterChange($event, 'city')"
+          class="filter-select"
+        >
+          <option value="">{{ 'cars.all_cities' | translate }}</option>
+          @for (c of cities(); track c) {
+            <option [value]="c">{{ c }}</option>
+          }
+        </select>
+      </div>
+    </div>
+
+    <div class="filter-buttons">
+      <button class="btn btn-secondary" (click)="clearFilters()">
+        {{ 'cars.clear' | translate }}
+      </button>
+    </div>
+  </div>
+
+  <!-- Cars Grid -->
+  @if (loading()) {
+    <app-loader></app-loader>
+  } @else if (error()) {
+    <div class="error">{{ error() }}</div>
+  } @else if (cars().length > 0) {
+    <div class="cars-info">
+      <p>
+        {{ 'cars.page' | translate }} {{ currentPage() }} / {{ totalPages() }} ({{ cars().length }}
+        {{ 'header.cars' | translate }})
+      </p>
+    </div>
+
+    <div class="cars-grid">
+      @for (car of cars(); track car.id) {
+        <app-card [car]="car" (isFavorite)="onFavoriteAdded($event)" />
+      }
+    </div>
+
+    <!-- Pagination -->
+    <div class="pagination">
+      <button class="btn btn-pagination" (click)="previousPage()" [disabled]="currentPage() === 1">
+        {{ 'cars.prev' | translate }}
+      </button>
+
+      <div class="page-info">
+        <input
+          type="number"
+          [ngModel]="currentPage()"
+          (ngModelChange)="goToPage($event)"
+          min="1"
+          [max]="totalPages()"
+          class="page-input"
+        />
+        / {{ totalPages() }}
+      </div>
+
+      <button
+        class="btn btn-pagination"
+        (click)="nextPage()"
+        [disabled]="currentPage() === totalPages()"
+      >
+        {{ 'cars.next' | translate }}
+      </button>
+    </div>
+  } @else {
+    <div class="no-cars">{{ 'cars.not_found' | translate }}</div>
+  }
+</div>

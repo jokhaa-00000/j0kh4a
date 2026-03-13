@@ -1,0 +1,60 @@
+<header>
+  <a routerLink="" class="header-logo">j0kh4a™️</a>
+  <button class="hamburger" (click)="toggleMenu()" aria-label="Open navigation">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+
+  <div class="spacer"></div>
+  <div class="lang-switch lang-pill-group">
+    <button
+      *ngFor="let lang of languages"
+      (click)="changeLang(lang.code)"
+      [class.active]="currentLang === lang.code"
+      [disabled]="currentLang === lang.code"
+    >
+      {{ lang.label }}
+    </button>
+  </div>
+
+  <div class="mobile-nav-overlay" [class.open]="menuOpen" (click)="toggleMenu()"></div>
+  <nav [class.open]="menuOpen">
+    <a
+      routerLink=""
+      class="btn-link"
+      routerLinkActive="active"
+      [routerLinkActiveOptions]="{ exact: true }"
+      >{{ 'header.home' | translate }}</a
+    >
+    <a routerLink="/cars" class="btn-link" routerLinkActive="active">{{
+      'header.cars' | translate
+    }}</a>
+    <a routerLink="/rentout" class="btn-link" routerLinkActive="active">{{
+      'header.rentout' | translate
+    }}</a>
+    @if (!isLoggedIn()) {
+      <div class="auth-links">
+        <a routerLink="/login" class="btn-link" routerLinkActive="active">{{
+          'header.login' | translate
+        }}</a>
+        <a routerLink="/register" class="btn-link" routerLinkActive="active">{{
+          'header.register' | translate
+        }}</a>
+      </div>
+    } @else {
+      <div class="user-menu">
+        <a routerLink="/profile" class="btn-link" routerLinkActive="active">{{
+          'header.profile' | translate
+        }}</a>
+        <div class="user-info">
+          <span class="user-name">{{ user()?.firstName }} {{ user()?.lastName }}</span>
+          <span class="user-email">{{ user()?.email }}</span>
+        </div>
+        <button (click)="logout()" routerLink="/" class="btn-link btn-logout">
+          {{ 'header.logout' | translate }}
+        </button>
+      </div>
+    }
+  </nav>
+</header>

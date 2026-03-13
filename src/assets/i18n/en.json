@@ -1,0 +1,103 @@
+{
+  "greeting": "Hello",
+  "header": {
+    "home": "Home",
+    "cars": "All Cars",
+    "rentout": "Rent Out",
+    "login": "Login",
+    "register": "Register",
+    "profile": "Profile",
+    "logout": "Logout"
+  },
+  "card": {
+    "fuel": "Fuel",
+    "capacity": "Capacity",
+    "transmission": "Transmission",
+    "price_per_day": "Price/Day",
+    "rent": "Rent",
+    "favorite_error": "Favorite error"
+  },
+  "register": {
+    "create_account": "Create Account",
+    "first_name": "First Name",
+    "last_name": "Last Name",
+    "email": "Email",
+    "phone": "Phone Number",
+    "password": "Password",
+    "confirm_password": "Confirm Password",
+    "role": "Role",
+    "customer": "Customer",
+    "agent": "Agent",
+    "already_have_account": "Already have an account?",
+    "login_here": "Login here",
+    "registering": "Registering...",
+    "register": "Register"
+  },
+  "rentout": {
+    "add_car": "Add a Car to Rent",
+    "brand": "Brand",
+    "model": "Model",
+    "year": "Year",
+    "price": "Price (per day)",
+    "capacity": "Capacity",
+    "transmission": "Transmission",
+    "city": "City",
+    "fuel_capacity": "Fuel Capacity",
+    "image1": "Photo 1 (optional)",
+    "image2": "Photo 2 (optional)",
+    "image3": "Photo 3 (optional)",
+    "save_car": "Save Car",
+    "saving": "Saving…",
+    "back_to_profile": "Back to profile",
+    "created": "Your car was created",
+    "view_all": "View all cars"
+  },
+  "profile": {
+    "notification_rented": "Your car was rented",
+    "favorites": "Favorite Cars",
+    "no_favorites": "You have not marked any favorite cars yet.",
+    "rented_cars": "Rented Cars",
+    "no_rentals": "No cars purchased.",
+    "car": "Car",
+    "duration": "Duration",
+    "price": "Price",
+    "city": "City"
+  },
+  "cars": {
+    "filter": "Filters",
+    "capacity": "Capacity",
+    "capacity_placeholder": "Enter capacity",
+    "start_year": "Start Year",
+    "start_year_placeholder": "Enter start year",
+    "end_year": "End Year",
+    "end_year_placeholder": "Enter end year",
+    "city": "City",
+    "all_cities": "All Cities",
+    "clear": "Clear Filters",
+    "page": "Page",
+    "prev": "Previous",
+    "next": "Next"
+  },
+  "footer": {
+    "about": "About",
+    "about_text": "This is a car rental platform for easy and secure car sharing.",
+    "links": "Links",
+    "contact": "Contact",
+    "phone": "Phone: +995 555 123 456",
+    "address": "Tbilisi, Georgia",
+    "rent": "Car Rental Service"
+  },
+  "intro": {
+    "title": "Welcome to J0kh4aDrive™️",
+    "text": "J0kh4aDrive™️ is your trusted platform for renting and sharing cars easily and securely. Browse, rent, or list your car with just a few clicks. Enjoy a seamless car rental experience!"
+  },
+  "rent": {
+    "liter": "liter",
+    "people": "people",
+    "days_label": "How many days do you want to rent?",
+    "day": "day(s)",
+    "total_paid": "Total paid"
+  },
+  "login.no_account": "Don't have an account?",
+  "login.create_here": "Create one here"
+}
